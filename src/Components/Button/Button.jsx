@@ -14,8 +14,7 @@ Button.defaultProps = {
 Button.propTypes = {
   btnType: PropTypes.string.isRequired,
   btnName: PropTypes.string.isRequired,
-  price: PropTypes.func,
-  classButton: PropTypes.string,
+  price: PropTypes.func
 };
 
 export default Button

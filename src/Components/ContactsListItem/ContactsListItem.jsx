@@ -14,7 +14,6 @@ const ContactsListItem = ({ onDelete, contacts }) => (
             btnType="button"
             btnName="Delete"
             onClick={() => onDelete(id)}
-            classButton="contact-button"
           />
         </li>
       );

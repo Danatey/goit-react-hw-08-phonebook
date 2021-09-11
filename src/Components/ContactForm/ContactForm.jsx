@@ -24,7 +24,7 @@ const ContactForm = ({handleSubmit,handleChange, name, number}) => {
                 onChange={handleChange}
                 id={nameInputId}
             />
-            <label htmlFor={numberInputId} className="form-label">Number</label>
+            <label htmlFor={numberInputId} >Number</label>
             <input
                 className="form-input"
                 type="tel"
@@ -41,7 +41,6 @@ const ContactForm = ({handleSubmit,handleChange, name, number}) => {
                     btnType={btnType}
                     btnName={btnName}
                     key={btnName}
-                    classButton="form-button"
                 />)
             })}
         </form>

@@ -10,13 +10,13 @@ import RegisterView from "./Views/RegisterView";
 
 import { currentUser } from "./redax/auth/auth-operations";
 
-// import "./App.css";
+import "./App.css";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   currentUser();
   return (
-    <div>
+    <div className="container">
       <AppBar />
       <Switch>
         <PrivateRoute path="/contacts">
