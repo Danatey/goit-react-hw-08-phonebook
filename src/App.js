@@ -1,4 +1,5 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router";
 
 import AppBar from "./Components/AppBar/AppBar";
@@ -14,15 +15,20 @@ import { currentUser } from "./redax/auth/auth-operations";
 import "./App.css";
 
 function App() {
+  const dispatch = useDispatch();
+
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  currentUser();
+
+  useEffect(() => {
+    dispatch(currentUser());
+  }, [dispatch]);
+
   return (
     <div className="container">
       <AppBar />
       <Switch>
         <PrivateRoute path="/contacts">
           {!isLoggedIn ? <Redirect to="/login" /> : <ContactsView />}
-          <ContactsView />
         </PrivateRoute>
         <PublicRoute path="/login" restricted>
           <LoginView />

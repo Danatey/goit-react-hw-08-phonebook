@@ -46,23 +46,12 @@ const logout = createAsyncThunk("auth/logout", async () => {
   }
 });
 
-const currentUser = createAsyncThunk("auth/current", async (credential) => {
-  try {
-    const { data } = await axios.get("/users/current");
-    //       {
-    //   headers: {
-    //     Authorization: `Bearer ${JSON.parse(profile)?.token.replace(
-    //       /['"]/g,
-    //       ""
-    //     )}`,
-    //   },
-    // });
-    getToken.set(data.token);
-    console.log(data);
-    return data;
-  } catch (error) {
-    return console.log(`Error: ${error}`);
-  }
+const currentUser = createAsyncThunk("auth/current", async (_, thunkApi) => {
+  const persistedToken = thunkApi.getState().auth.token;
+  getToken.set(persistedToken);
+  const { data } = await axios.get("/users/current");
+  console.log(data);
+  return data;
 });
 
 export { register, logout, login, currentUser };
